@@ -4,6 +4,7 @@ namespace App\Http\Livewire\production;
 
 
 use App\Models\Plante;
+use App\Models\Vivres;
 use Livewire\Component;
 use App\Models\Metrepas;
 use App\Models\Ingredient;
@@ -30,7 +31,8 @@ class MetRepa extends Component
         return view('livewire.production.metrepas.index',[
             "lists"=>Metrepas::where('libmetrepas', 'like', $searchcritere)
             ->orderBy('libmetrepas', 'ASC')->paginate(10),
-            "listsf"=>Plante::all()
+            "listsf"=>Plante::all(),
+            "listsf2"=>Vivres::all()
         ])
         ->extends("layouts.dash")
         ->section('contenu');

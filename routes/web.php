@@ -25,6 +25,7 @@ use App\Http\Livewire\production\MetRepa;
 use App\Http\Livewire\parametre\Provinces;
 use App\Http\Livewire\gestion\ClassesEcoles;
 use App\Http\Livewire\hygiene\Consultations;
+use App\Http\Livewire\parametre\Enseignants;
 use App\Http\Livewire\parametre\Medicaments;
 use App\Http\Livewire\gestion\AnneeScolaires;
 use App\Http\Livewire\production\Ingredients;
@@ -111,6 +112,7 @@ Route::get('/accueil', [App\Http\Controllers\HomeController::class, 'index'])->n
                       Route::get('/csp',Csps::class)->name('cspindex')->middleware("auth.administrateur");
                        Route::get('/dispositifhygiene',Dispositifhygienes::class)->name('dispositifhygieneindex')->middleware("auth.administrateur");
                         Route::get('/ecole',Ecoles::class)->name('ecoleindex')->middleware("auth.administrateur");
+                        Route::get('/enseignant',Enseignants::class)->name('enseignantindex')->middleware("auth.administrateur");
                          Route::get('/medicament',Medicaments::class)->name('medicamentindex')->middleware("auth.administrateur");
                           Route::get('/plante',Plantes::class)->name('planteindex')->middleware("auth.administrateur");
                            Route::get('/province',Provinces::class)->name('provinceindex')->middleware("auth.administrateur");

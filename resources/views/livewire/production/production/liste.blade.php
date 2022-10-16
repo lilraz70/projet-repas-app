@@ -5,7 +5,6 @@
             <h3 class="card-title flex-grow-1"><i class="fa-sharp fa-solid fa-clipboard-list fa-2x mr-1"></i>Liste
                 des Productions</h3>
                 
-                
             <div class="card-tools d-flex align-items-center">
                 <a class="btn btn-link text-white mr-4 d-block" wire:click.prevent="gotoCreate()"><i class="fa-solid fa-square-plus mr-1"></i>Nouveau</a>
                 
