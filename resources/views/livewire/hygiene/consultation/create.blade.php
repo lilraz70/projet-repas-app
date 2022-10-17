@@ -56,6 +56,13 @@
                     </select>
                 </div>
                 <div class="col-md-4 mb-4">
+                    <label for="d2">Nombre recu</label>
+                    <input type="number" wire:model="newData.nbrecu" class="form-control @error('newData.nbrecu')
+                    is-invalid
+                @enderror" placeholder="Nombre recu"
+                        required>
+                </div>
+                <div class="col-md-4 mb-4">
                     <label for="d2">Nombre de fille</label>
                     <input type="text" wire:model="newData.nbfille" class="form-control @error('newData.nbfille')
                     is-invalid

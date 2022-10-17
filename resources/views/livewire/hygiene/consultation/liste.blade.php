@@ -36,6 +36,7 @@
                         <th style="width:40%" class="text-center">Total</th>
                         <th style="width:40%" class="text-center">Phase</th>
                         <th style="width:40%" class="text-center">Medicament</th>
+                        <th style="width:40%" class="text-center">Nombre recu</th>
                         <th style="width:25%" class="text-center">Action</th>
                     </tr>
                 </thead>
@@ -50,6 +51,7 @@
                         <td class="text-center">{{$list->Consultation->nbtotal}}</td>
                         <td class="text-center">{{$list->Consultation->phase}}</td>
                         <td class="text-center">{{$list->Medicament->libmedicament}}</td>
+                        <td class="text-center">{{$list->Consultation->nb_recu}}</td>
                         <td class="text-center">
                             <button class="btn btn-link"   wire:click="gotoEdit({{$list->idsoins}},{{$list->Consultation->idconsultation}})"><i class="fa-solid fa-pen-to-square fa-1x "></i></button>
                             <button class="btn btn-link" wire:click="confirmDelete('{{$list->idsoins}}', {{$list->Consultation->idconsultation}})"><i class="fa-solid fa-trash fa-1x"></i></button>    

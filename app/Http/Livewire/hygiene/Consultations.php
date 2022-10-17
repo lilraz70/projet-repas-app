@@ -77,10 +77,10 @@ class Consultations extends Component
     public function insertInBd()
     {
         $this->validate();
-        try {
+        // try {
             $data = $this->newData;
             Consultation::create([
-                'idconsultation' =>$data["idecole"].$data['idmedicament'],
+                'idconsultation' =>$data["idecole"].$data['idmedicament'].$data["dateconsult"],
                 'dateconsult' => $data["dateconsult"],
                 'anne' => (int)$data["dateconsult"],
                 'idusers' => Auth::User()->id,
@@ -89,20 +89,21 @@ class Consultations extends Component
                 'nbfille' =>  $data["nbfille"],
                 'nbgarcon' =>  $data["nbgarcon"],
                 'nbtotal' =>  $data["nbfille"] + $data["nbgarcon"],
-                'phase' =>  $data["phase"]
+                'phase' =>  $data["phase"],
+                'nb_recu'=> $data['nbrecu']
             ]);
             Soins::create([
-                'idsoins'=> $data["idecole"].$data['idmedicament'],
+                'idsoins'=> $data["idecole"].$data['idmedicament'].$data["dateconsult"],
                 'idmedicament' => $data['idmedicament'],
                 'idconsultation' =>$data["idecole"].$data['idmedicament']
             ]);
-            $this->newData = [];
+        //     $this->newData = [];
 
-            // $this->dispatchBrowserEvent("showMessageSuccess", []);
-            session()->flash('erreur3', "Ajout reussi");
-        } catch (\Throwable $th) {
-            session()->flash('erreur', "Oups!! Opération non effectuer,Vérifier vos informations");
-        }
+        //     // $this->dispatchBrowserEvent("showMessageSuccess", []);
+        //     session()->flash('erreur3', "Ajout reussi");
+        // } catch (\Throwable $th) {
+        //     session()->flash('erreur', "Oups!! Opération non effectuer,Vérifier vos informations");
+        // }
     }
     public function  editInBd()
     {
