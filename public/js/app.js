@@ -22945,8 +22945,7 @@ window.Swal = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2
 
 
 
- // import jQuery from 'jquery';
-// window.$ = jQuery;
+
 
 /***/ }),
 
@@ -22956,7 +22955,10 @@ window.Swal = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2
   \***********************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js"); // window.$ = require('jquery');
+window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+window.$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"); // importation de jquery
+// require('select2');
+// $('.select2').select2();
 // try {
 //     require('bootstrap');
 // } catch (e) {}

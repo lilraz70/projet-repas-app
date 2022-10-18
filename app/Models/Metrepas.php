@@ -39,4 +39,12 @@ class Metrepas extends Model
      */
     // protected $fillable = ['libmetrepas', 'observation', 'created_at', 'updated_at'];
     protected $guarded = [];
+    public function vivres()
+    {
+        return $this->belongsToMany('App\Models\vivres','ingredient','idmetrepas','idvivre')->withPivot('quantite')->withTimestamps();
+    }
+    public function plantes()
+    {
+        return $this->belongsToMany('App\Models\Plante','ingredient','idmetrepas','idplante')->withPivot('quantite')->withTimestamps();
+    }
 }

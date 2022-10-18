@@ -59,10 +59,9 @@ class Consultations extends Component
     {
         $this->isBtnAddclicked = true;
     }
-    public function gotoEdit($id1,$id2)
+    public function gotoEdit($id)
     { 
-        $this->editData = Consultation::find($id1)->toArray() + Soins::find($id2)->toArray();
-       
+        $this->editData = Consultation::find($id)->toArray();
         $this->isBtnEditClicked = true;
     }
     public function goToList()
@@ -77,10 +76,10 @@ class Consultations extends Component
     public function insertInBd()
     {
         $this->validate();
-        // try {
+        try {
             $data = $this->newData;
             Consultation::create([
-                'idconsultation' =>$data["idecole"].$data['idmedicament'].$data["dateconsult"],
+                'idconsultation' =>$data["idecole"].$data['idmedicament'],
                 'dateconsult' => $data["dateconsult"],
                 'anne' => (int)$data["dateconsult"],
                 'idusers' => Auth::User()->id,
@@ -93,17 +92,16 @@ class Consultations extends Component
                 'nb_recu'=> $data['nbrecu']
             ]);
             Soins::create([
-                'idsoins'=> $data["idecole"].$data['idmedicament'].$data["dateconsult"],
                 'idmedicament' => $data['idmedicament'],
                 'idconsultation' =>$data["idecole"].$data['idmedicament']
             ]);
-        //     $this->newData = [];
+            $this->newData = [];
 
-        //     // $this->dispatchBrowserEvent("showMessageSuccess", []);
-        //     session()->flash('erreur3', "Ajout reussi");
-        // } catch (\Throwable $th) {
-        //     session()->flash('erreur', "Oups!! Opération non effectuer,Vérifier vos informations");
-        // }
+            // $this->dispatchBrowserEvent("showMessageSuccess", []);
+            session()->flash('erreur3', "Ajout reussi");
+        } catch (\Throwable $th) {
+            session()->flash('erreur', "Oups!! Opération non effectuer,Ces donnees exits");
+        }
     }
     public function  editInBd()
     {
@@ -123,12 +121,6 @@ class Consultations extends Component
             'phase' =>  $this->editData["phase"]
 
         ]);
-        Soins::find($this->editData['idsoins'])->update(
-            [
-            'idconsultation' => $this->editData["idconsultation"],
-            'idmedicament' =>  $this->editData["idmedicament"]
-            ]
-        );
         
         $this->editData = [];
         session()->flash('erreur3', "Modification reussi");

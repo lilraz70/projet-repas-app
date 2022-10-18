@@ -18,7 +18,7 @@ class Vivres extends Model
      * @var string
      */
     protected $primaryKey = 'idvivre';
-
+    protected $table = 'vivres';
     /**
      * The "type" of the auto-incrementing ID.
      * 
@@ -38,5 +38,8 @@ class Vivres extends Model
      * @var array
      */
     // protected $fillable = ['libvivres', 'created_at', 'updated_at'];
-    
+    public function metrepas()
+    {
+        return $this->belongsToMany('App\Models\Metrepas','ingredient','idvivre','idmetrepas')->withPivot('quantite')->withTimestamps();
+    }
 }

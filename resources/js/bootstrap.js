@@ -1,5 +1,9 @@
 window._ = require('lodash');
-// window.$ = require('jquery');
+window.$ = require('jquery'); // importation de jquery
+// require('select2');
+// $('.select2').select2();
+
+
 // try {
 //     require('bootstrap');
 // } catch (e) {}

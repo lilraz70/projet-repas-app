@@ -37,8 +37,8 @@
                         <td class="text-center">{{$list->libmetrepas}}</td>
                         <td class="text-center">{{$list->observation}}</td>
                         <td class="text-center">
-                            <button class="btn btn-link" wire:click="gotoEdit({{$list->idmetrepas}})"><i class="fa-solid fa-pen-to-square fa-1x "></i></button>
-                            <button class="btn btn-link" wire:click="confirmDelete('{{$list->libmetrepas}}', {{$list->idmetrepas}})"><i class="fa-solid fa-trash fa-1x"></i></button>    
+                            {{-- <button class="btn btn-link" wire:click="gotoEdit({{$list->idmetrepas}})"><i class="fa-solid fa-pen-to-square fa-1x "></i></button> --}}
+                            <button class="btn btn-link" wire:click="confirmDelete('{{$list->idmetrepas}}'"><i class="fa-solid fa-trash fa-1x"></i></button>    
                             </td>
                     </tr>
                     @endforeach

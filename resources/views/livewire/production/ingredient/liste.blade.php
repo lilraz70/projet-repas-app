@@ -22,6 +22,7 @@
                 <thead>
                     <tr>
                         <th style="width:10%" class="text-center">Plante</th>
+                        <th style="width:10%" class="text-center">Vivres</th>
                         <th style="width:25%" class="text-center">Met Repas</th>
                         <th style="width:40%" class="text-center">Quantite</th>
                         <th style="width:40%" class="text-center">Observation</th>
@@ -31,10 +32,11 @@
                 <tbody>
                     @foreach ($lists as $list )
                     <tr>
-                        <td class="text-center">{{$list->Plante->libplante}}</td>
-                        <td class="text-center">{{$list->Metrepas->libmetrepas}}</td>
-                        <td class="text-center">{{$list->quantite}}</td>
-                        <td class="text-center">{{$list->Observation}}</td>
+                        <td class="text-center">{{$list->Plante->libplante ?? ''}}</td>
+                        <td class="text-center">{{$list->Vivres->libvivres ?? ''}}</td>
+                        <td class="text-center">{{$list->Metrepas->libmetrepas ?? ''}}</td>
+                        <td class="text-center">{{$list->quantite ?? ''}}</td>
+                        <td class="text-center">{{$list->Observation ?? ''}}</td>
                         <td class="text-center"><button class="btn btn-link">
                                 <i class="fa-solid fa-pen-to-square fa-1x mr-2"></i>
                                 <i class="fa-solid fa-trash fa-1x"></i>

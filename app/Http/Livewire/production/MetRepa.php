@@ -18,39 +18,43 @@ class MetRepa extends Component
     public $isBtnAddclicked = false;
     public $isBtnEditClicked = false;
     public $newData = [];
+    public $newDatap = [];
+    public $newDatav = [];
     public $editData = [];
     public $search = "";
-    protected $rules = [
-        'newData.quantite' => 'numeric',
-    ];
+    // protected $rules = [
+    //     'newData.quantite' => 'numeric',
+    // ];
 
     public function render()
     {
         try {
-            $searchcritere = "%".$this->search."%";
-        return view('livewire.production.metrepas.index',[
-            "lists"=>Metrepas::where('libmetrepas', 'like', $searchcritere)
-            ->orderBy('libmetrepas', 'ASC')->paginate(10),
-            "listsf"=>Plante::all(),
-            "listsf2"=>Vivres::all()
-        ])
-        ->extends("layouts.dash")
-        ->section('contenu');
-    } catch (\Throwable $th) {
-        session()->flash('erreur2', "Oups!! Veuillez contacter l'administrateur");
-    }
+            $searchcritere = "%" . $this->search . "%";
+            return view('livewire.production.metrepas.index', [
+                "lists" => Metrepas::where('libmetrepas', 'like', $searchcritere)
+                    ->orderBy('libmetrepas', 'ASC')->paginate(10),
+                "listsf" => Plante::all(),
+                "listsf2" => Vivres::all()
+            ])
+                ->extends("layouts.dash")
+                ->section('contenu');
+        } catch (\Throwable $th) {
+            session()->flash('erreur2', "Oups!! Veuillez contacter l'administrateur");
+        }
     }
 
-    Public function gotoCreate(){
+    public function gotoCreate()
+    {
         $this->isBtnAddclicked = true;
     }
     public function gotoEdit($id)
     {
         $this->editData = Metrepas::find($id)->toArray();
-       
+
         $this->isBtnEditClicked = true;
     }
-    public function goToList(){
+    public function goToList()
+    {
         $this->isBtnEditClicked = false;
         $this->isBtnAddclicked = false;
         $this->newData = [];
@@ -60,52 +64,46 @@ class MetRepa extends Component
 
     public function insertInBd()
     {
-    //     // $this->validate();
-        // try {
-
-        $data = $this->newData;
-
-         Metrepas::create([
-            'idmetrepas'=>$data["idplante"].$data["quantite"],
-            'libmetrepas' => $data["libmetrepas"],
-            'observation' => $data["observation"]
+        $data = Metrepas::create([
+            'idmetrepas' => $this->newData["libmetrepas"],
+            'libmetrepas' => $this->newData["libmetrepas"],
+            'observation' => $this->newData["observation"]
         ]);
+       
+        $ingredients = collect($this->newDatap)->map(function ($ingredient) {
+            return ['quantite' => $ingredient];
+        });
+        // dd($data,$ingredients);
+       $data2 =  $data->$ingredients()->sync(
+            $ingredients
+        );
+       dd($data2);
 
-        Ingredient::create([
-            'idplante' => $data["idplante"],
-            'idmetrepas' =>$data["idplante"].$data["quantite"], 
-            'quantite' =>  $data["quantite"],
-            'observation' =>  $data["observation"]
-        ]);
-    //     $this->newData=[];
+        // ajout des ingredient
 
-    //     // $this->dispatchBrowserEvent("showMessageSuccess", []);
-    //     session()->flash('erreur3', "Ajout reussi");
-        
-    // } catch (\Throwable $th) {
-    //     session()->flash('erreur', "Oups!! Opération non effectuer,Vérifier vos informations");
-    // }
+
+        // ajout du metrepas
+
     }
     public function  editInBd()
     {
 
         try {
 
-        Metrepas::find($this->editData['idmetrepas'])->update($this->editData);
-        
-        $this->editData = [];
-        session()->flash('erreur3', "Modification reussi");
+            Metrepas::find($this->editData['idmetrepas'])->update($this->editData);
+
+            $this->editData = [];
+            session()->flash('erreur3', "Modification reussi");
         } catch (\Throwable $th) {
             session()->flash('erreur', "Oups!! Opération non effectuer,Vérifier vos informations");
         }
-
     }
-    public function confirmDelete($lib, $id)
+    public function confirmDelete($id)
     {
         $this->dispatchBrowserEvent("showDelete", [
             "message" =>
             [
-                'text' => "Vous-êtes sur le point de supprimer $lib",
+                'text' => "Vous-êtes sure",
                 'id' => $id
 
             ]
@@ -121,7 +119,5 @@ class MetRepa extends Component
         } catch (\Throwable $th) {
             session()->flash('erreur2', "Oups!! Opération non effectuer,Ces données sont utiliser dans d'autre table");
         }
-        
-       
     }
 }

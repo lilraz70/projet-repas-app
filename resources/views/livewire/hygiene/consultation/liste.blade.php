@@ -53,8 +53,8 @@
                         <td class="text-center">{{$list->Medicament->libmedicament}}</td>
                         <td class="text-center">{{$list->Consultation->nb_recu}}</td>
                         <td class="text-center">
-                            <button class="btn btn-link"   wire:click="gotoEdit({{$list->idsoins}},{{$list->Consultation->idconsultation}})"><i class="fa-solid fa-pen-to-square fa-1x "></i></button>
-                            <button class="btn btn-link" wire:click="confirmDelete('{{$list->idsoins}}', {{$list->Consultation->idconsultation}})"><i class="fa-solid fa-trash fa-1x"></i></button>    
+                            <button class="btn btn-link" wire:click="gotoEdit('{{$list->Consultation->idconsultation}}')"><i class="fa-solid fa-pen-to-square fa-1x "></i></button>
+                            <button class="btn btn-link" wire:click="confirmDelete({{$list->idsoins}}, '{{$list->Consultation->idconsultation}}')"><i class="fa-solid fa-trash fa-1x"></i></button>    
                             </td>
                     </tr>
                     @endforeach

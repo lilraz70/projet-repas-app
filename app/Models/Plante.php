@@ -46,4 +46,10 @@ class Plante extends Model
      */
     // protected $fillable = ['libplante', 'typeplante', 'created_at', 'updated_at'];
     protected $guarded = [];
+    public function metrepas()
+    {
+        return $this->belongsToMany('App\Models\Metrepas', 'ingredient','idplante','idmetrepas')->withPivot('quantite')->withTimestamps();
+    }
+
 }
+
