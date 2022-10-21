@@ -19,7 +19,7 @@
     <form role="form" wire:submit.prevent="insertInBd()">
         <div class="card-body">
             <div class="form-group">
-                <label for="d2">Region</label>
+                <label for="d2">Region <span class="etoileObligatoire">*</span></label>
                 <input type="text" wire:model="newData.libregion" class="form-control @error('newData.libregion')
                     is-invalid
                 @enderror" placeholder="Region" required>
@@ -31,7 +31,7 @@
                 <label for="d2">Superficie</label>
                 <input type="text" wire:model="newData.superficie" class="form-control @error('newData.superficie')
                 is-invalid
-            @enderror" placeholder="Superficie" required>
+            @enderror" placeholder="Superficie">
             </div>
 
         </div>

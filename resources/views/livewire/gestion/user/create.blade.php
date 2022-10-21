@@ -24,7 +24,7 @@
                             <span class="fa fa-user"></span>
                         </span>                    
                     </div>
-                    <input  wire:model="newData.name" type="text" class="form-control @error('newData.name') is-invalid @enderror"   placeholder="Nom et Prenom" required="required">
+                    <input  wire:model="newData.name" type="text" class="form-control @error('newData.name') is-invalid @enderror"   placeholder="Nom et Prenom (obligatoire)" required="required">
                 
                 </div>
             </div>
@@ -36,7 +36,7 @@
                             <span class="fa fa-user-circle"></span>
                         </span>                    
                     </div>
-                    <input wire:model="newData.login" type="text" class="form-control @error('newData.login') is-invalid @enderror"   placeholder="Login" required="required">
+                    <input wire:model="newData.login" type="text" class="form-control @error('newData.login') is-invalid @enderror"   placeholder="Login (obligatoire)" required="required">
                 
                 
                 </div>
@@ -49,7 +49,7 @@
                             <i class="fa fa-envelope"></i>
                         </span>                    
                     </div>
-                    <input wire:model="newData.email" type="email" class="form-control @error('newData.email') is-invalid @enderror"  placeholder="Adresse Email" required="required">
+                    <input wire:model="newData.email" type="email" class="form-control @error('newData.email') is-invalid @enderror"  placeholder="Adresse Email (obligatoire)" required="required">
                      
                 </div>
                 
@@ -62,7 +62,7 @@
                 <select class="custom-select" style="max-width: 120px;">
                     <option selected="">+226</option>
                 </select>
-                <input type="text" wire:model="newData.telephone"  class="form-control @error('newData.telephone') is-invalid @enderror"  placeholder="Telephone" >
+                <input type="text" wire:model="newData.telephone"  class="form-control @error('newData.telephone') is-invalid @enderror"  placeholder="Telephone (obligatoire)" >
                 
             </div>
         <div class="col-md-4">
@@ -72,7 +72,7 @@
                             <i class="fa fa-lock"></i>
                         </span>                    
                     </div>
-                    <input  type="password" wire:model="newData.password" class="form-control  @error('newData.password') is-invalid @enderror"  placeholder="Mot de passe" required="required">
+                    <input  type="password" wire:model="newData.password" class="form-control  @error('newData.password') is-invalid @enderror"  placeholder="Mot de passe (obligatoire)" required="required">
             </div>
         </div>
             

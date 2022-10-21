@@ -21,10 +21,10 @@ class Provinces extends Component
     public $selectedStatus = ''; 
     // public $perPage = 10;
     public $search = "";
-    protected $rules = [
-        // 'newData.libprovince' => 'required|unique:province,libprovince|string',
-        'newData.superficie' => 'required|numeric'
-    ];
+    // protected $rules = [
+    //     // 'newData.libprovince' => 'required|unique:province,libprovince|string',
+    //     'newData.superficie' => 'required|numeric'
+    // ];
     public function render()
     {
        $searchcritere = "%".$this->search."%";
@@ -60,7 +60,7 @@ class Provinces extends Component
 
     public function insertInBd()
     {
-        $this->validate();
+        // $this->validate();
         try {
 
        $data = $this->newData;
@@ -68,7 +68,7 @@ class Provinces extends Component
          Province::create([
             'idregion' => $data["idregion"],
             'libprovince' => $data["libprovince"],
-            'superficie' =>  $data["superficie"]
+            'superficie' =>  $data["superficie"] ?? null
         ]);
         
      

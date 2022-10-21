@@ -17,7 +17,7 @@
     <form role="form" wire:submit.prevent="insertInBd()">
         <div class="card-body">
             <div class="form-group">
-                <div><label for="libcommune">COMMUNE</label></div>
+                <div><label for="libcommune">COMMUNE <span class="etoileObligatoire">*</span></label></div>
                 <select class="form-control " wire:model="newData.idcommune" required>
                     <option value="">Commune-Province</option>
                     @foreach ($communes as $commune )
@@ -27,7 +27,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="libceb">CEB</label>
+                <label for="libceb">CEB <span class="etoileObligatoire">*</span></label>
                 <input type="text" wire:model="newData.libceb" class="form-control" placeholder="Libelle Ceb" required>
             </div>
            

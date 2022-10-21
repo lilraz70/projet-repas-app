@@ -67,10 +67,12 @@ class Enseignants extends Component
 
     public function insertInBd()
     {
+        dd($this->newData);
         $this->validate();
         try {
            
             $data = $this->newData;
+
             // dd($data);
             Enseignant::create([
                 'annescolaire' => $data["anne"],

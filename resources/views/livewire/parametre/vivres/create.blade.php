@@ -17,7 +17,7 @@
     <form role="form" wire:submit.prevent="insertInBd()">
         <div class="card-body">
             <div class="form-group">
-                <label for="d2">Vivre</label>
+                <label for="d2">Vivre<span class="etoileObligatoire">*</span></label>
                 <input type="text" wire:model="newData.libvivres" class="form-control" placeholder="Vivre" required>
             </div>
         <div class="card-footer">

@@ -18,7 +18,7 @@
         <div class="card-body">
             
             <div class="form-group">
-                <div><label for="d2">Utilisateur</label></div>
+                <div><label for="d2">Utilisateur<span class="etoileObligatoire">*</span></label></div>
                 <select class="form-control " wire:model="newData.iduser" required>
                     <option value="">-------</option>
                     @foreach ($listsf as $list )
@@ -28,7 +28,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <div><label for="d2">Role</label></div>
+                <div><label for="d2">Role</label><span class="etoileObligatoire">*</span></div>
                 <select class="form-control " wire:model="newData.idrole" required>
                     <option value="">---------</option>
                     @foreach ($listsf2 as $list )

@@ -20,11 +20,11 @@ class Regions extends Component
     public $editData = [];
    
     public $search = "";
-    protected $rules = [
+    // protected $rules = [
 
        
-        'newData.superficie' => 'required|numeric'
-    ];
+    //     'newData.superficie' => 'required|numeric'
+    // ];
 
     public function render()
     {
@@ -57,7 +57,7 @@ class Regions extends Component
 
     public function insertInBd()
     {
-        $this->validate();
+        // $this->validate();
         try {
            
 
@@ -65,7 +65,7 @@ class Regions extends Component
         Region::create([
             
             'libregion' => $data["libregion"],
-            'superficie' => $data["superficie"],
+            'superficie' => $data["superficie"] ?? null,
         ]);
 
         $this->newData = [];

@@ -17,15 +17,15 @@
         <div class="card-body">
             
             <div class="form-group">
-                <label for="d2">Anne</label>
+                <label for="d2">Anne <span class="etoileObligatoire">*</span></label>
                 <input type="text" wire:model="newData.anne" class="form-control" placeholder="Anne" required>
             </div>
             <div class="form-group">
-                <label for="d2">Date Debut</label>
+                <label for="d2">Date Debut <span class="etoileObligatoire">*</span></label>
                 <input type="date" wire:model="newData.datedebut" class="form-control" placeholder="Date Debut" required>
             </div>
             <div class="form-group">
-                <label for="d2">Date fin</label>
+                <label for="d2">Date fin <span class="etoileObligatoire">*</span></label>
                 <input type="date" wire:model="newData.datefin" class="form-control" placeholder="Date fin" required>
             </div>
         </div>

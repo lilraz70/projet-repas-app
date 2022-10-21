@@ -62,8 +62,8 @@ class Medicaments extends Component
             
             'codemedicament' => $data["codemedicament"],
             'libmedicament' => $data["libmedicament"],
-            'posologie' =>  $data["posologie"],
-            'observation' =>  $data["observation"],
+            'posologie' =>  $data["posologie"] ?? null,
+            'observation' =>  $data["observation"] ?? null,
             'typemedi' =>  $data["typemedi"]
         ]);
         $this->newData=[];

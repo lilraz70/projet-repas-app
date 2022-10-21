@@ -18,23 +18,23 @@
         <div class="card-body">
             <div class="row g-3 mx-auto mt-3">
                 <div class="col-md-6 mb-4">
-                <label for="d2">Code Medicament</label>
+                <label for="d2">Code Medicament <span class="etoileObligatoire">*</span></label>
                 <input type="text" wire:model="newData.codemedicament" class="form-control" placeholder="Code Medicament" required>
             </div>
             <div class="col-md-4">
-                <label for="d2">Medicament</label>
+                <label for="d2">Medicament<span class="etoileObligatoire">*</span></label>
                 <input type="text" wire:model="newData.libmedicament" class="form-control" placeholder="Medicament" required>
             </div>
             <div class="col-md-4">
                 <label for="d2">Posologie</label>
-                <input type="text" wire:model="newData.posologie" class="form-control" placeholder="Posologie" required>
+                <input type="text" wire:model="newData.posologie" class="form-control" placeholder="Posologie" >
             </div>
             <div class="col-md-4">
                 <label for="d2">Observation</label>
-                <input type="text" wire:model="newData.observation" class="form-control" placeholder="Observation" required>
+                <input type="text" wire:model="newData.observation" class="form-control" placeholder="Observation">
             </div>
             <div class="col-md-4">
-            <div><label for="d2">Type medicament</label></div>
+            <div><label for="d2">Type medicament<span class="etoileObligatoire">*</span></label></div>
             <select class="form-control " wire:model="newData.typemedi" required>
                 <option value="">-------</option>
                

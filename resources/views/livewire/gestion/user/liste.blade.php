@@ -22,7 +22,7 @@
                 <thead>
                     <tr>
                        
-                        <th style="width:40%" class="text-center">Name</th>
+                        <th style="width:40%" class="text-center">Nom</th>
                         <th style="width:30%" class="text-center">Login</th>
                         <th style="width:40%" class="text-center">Email</th>
                         <th style="width:25%" class="text-center">Telephone</th>

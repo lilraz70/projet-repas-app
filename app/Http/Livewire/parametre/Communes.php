@@ -18,9 +18,9 @@ class Communes extends Component
     public $search = "";
     public $selectedStatus = ''; 
     public $editData = [];
-    protected $rules = [
-        'newData.superficie' => 'numeric',
-    ];
+    // protected $rules = [
+    //     'newData.superficie' => 'numeric',
+    // ];
 
     public function render()
     {
@@ -68,7 +68,7 @@ class Communes extends Component
          Commune::create([
             'libcommune' =>  $data["libcommune"],
             'idprovince' => $data["idprovince"],
-            'superficie' => $data["superficie"],
+            'superficie' => $data["superficie"] ?? null,
         ]);
       
         $this->newData=[];

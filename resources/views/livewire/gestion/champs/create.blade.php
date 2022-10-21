@@ -17,7 +17,7 @@
         
         <div class="row g-3 mx-auto mt-3">
             <div class="col-md-6 mb-4">
-                <div><label for="d2">Ecole</label></div>
+                <div><label for="d2">Ecole <span class="etoileObligatoire">*</span></label></div>
                 <select class="form-control " wire:model="newData.idecole" required>
                     <option value="">Ecole-Commune-Province</option>
                     @foreach ($listsf as $list )
@@ -26,20 +26,20 @@
                 </select>
             </div>
             <div class="col-md-6">
-                <label for="d2">Champs</label>
+                <label for="d2">Champs <span class="etoileObligatoire">*</span></label>
                 <input type="text" wire:model="newData.libchamps" class="form-control" placeholder="Champs" required>
             </div>
         
         
             <div  class="col-md-6">
-                <label for="d2">superficie</label>
-                <input type="text" wire:model="newData.superficie" class="form-control @error('newData.superficie')
+                <label for="d2">superficie <span class="etoileObligatoire">*</span></label>
+                <input type="number" wire:model="newData.superficie" class="form-control @error('newData.superficie')
                 is-invalid
-            @enderror" placeholder="superficie" required>
+            @enderror" placeholder="superficie">
             </div>
            
             <div class="col-md-4">
-                <div><label for="d2">Type Champs</label></div>
+                <div><label for="d2">Type Champs <span class="etoileObligatoire">*</span></label></div>
                 <select class="form-control " wire:model="newData.typechamps" required>
                     <option value="">-------</option>
                     <option value="Champs">Champs</option>
@@ -52,12 +52,3 @@
         </div>
     </form>
 </div>
-{{-- 
-<script>
-    window.addEventListener("success", event=>{
-        console.log(event)
-
-    }
-
-
-</script> --}}

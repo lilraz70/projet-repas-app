@@ -20,12 +20,12 @@
         <div class="card-body">
             <div class="row g-3 mx-auto mt-3">
                 <div class="col-md-3 mb-4">
-                    <label for="d2">Date</label>
+                    <label for="d2">Date <span class="etoileObligatoire">*</span></label>
                     <input type="date" wire:model="newData.dateconsult" class="form-control" placeholder="Date"
                         required>
                 </div>
                 <div class="form-group">
-                    <div><label for="d2">Ecole</label></div>
+                    <div><label for="d2">Ecole <span class="etoileObligatoire">*</span></label></div>
                     <select class="form-control " wire:model="newData.idecole" required>
                         <option value="">Ecole-Ceb-Commune-Province</option>
                         @foreach ($listsf as $list )
@@ -36,7 +36,7 @@
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <div><label for="d2">Csp</label></div>
+                    <div><label for="d2">Csp <span class="etoileObligatoire">*</span></label></div>
                     <select class="form-control " wire:model="newData.idcsp" required>
                         <option value="">Csp-Commune-Province</option>
                         @foreach ($listsf2 as $list )
@@ -46,7 +46,7 @@
                     </select>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div><label for="d2">Medicament</label></div>
+                    <div><label for="d2">Medicament <span class="etoileObligatoire">*</span></label></div>
                     <select class="form-control " wire:model="newData.idmedicament" required>
                         <option value="">-------</option>
                         @foreach ($listsf4 as $list )
@@ -56,21 +56,21 @@
                     </select>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <label for="d2">Nombre recu</label>
+                    <label for="d2">Nombre recu <span class="etoileObligatoire">*</span></label>
                     <input type="number" wire:model="newData.nbrecu" class="form-control @error('newData.nbrecu')
                     is-invalid
                 @enderror" placeholder="Nombre recu"
                         required>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <label for="d2">Nombre de fille</label>
+                    <label for="d2">Nombre de fille <span class="etoileObligatoire">*</span></label>
                     <input type="text" wire:model="newData.nbfille" class="form-control @error('newData.nbfille')
                     is-invalid
                 @enderror" placeholder="Nombre de fille"
                         required>
                 </div>
                 <div class="col-md-4">
-                    <label for="d2">Nombre de garcon</label>
+                    <label for="d2">Nombre de garcon <span class="etoileObligatoire">*</span></label>
                     <input type="text" wire:model="newData.nbgarcon" class="form-control @error('newData.nbgarcon')
                     is-invalid
                 @enderror" placeholder="Nombre de garcon"
@@ -78,7 +78,7 @@
                 </div>
                 
                 <div class="col-md-4 ">
-                    <label for="d2">Phase</label>
+                    <label for="d2">Phase <span class="etoileObligatoire">*</span></label>
                     <input type="text" wire:model="newData.phase" class="form-control  @error('newData.phase')
                     is-invalid
                 @enderror" placeholder="Phase" required>

@@ -18,7 +18,7 @@
     <form role="form" wire:submit.prevent="insertInBd()">
         <div class="card-body">
             <div class="form-group">
-                <div><label for="d2">Region</label></div>
+                <div><label for="d2">Region <span class="etoileObligatoire">*</span></label></div>
                 <select class="form-control " wire:model="newData.idregion" required>
                     <option value="">----Region---</option>
                     @foreach ($listsf as $list )
@@ -28,7 +28,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="d2">Province</label>
+                <label for="d2">Province <span class="etoileObligatoire">*</span></label>
                 <input type="text" wire:model="newData.libprovince" class="form-control" placeholder="Province" required>
             </div>
             <div class="form-group">
@@ -36,7 +36,7 @@
                 <input type="text" wire:model="newData.superficie" class="form-control
                 @error('newData.superficie')
                     is-invalid
-                @enderror" placeholder="Superficie" required>
+                @enderror" placeholder="Superficie">
                 
             </div>
            

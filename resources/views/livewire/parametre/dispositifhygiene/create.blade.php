@@ -18,11 +18,11 @@
         <div class="card-body">
             
             <div class="form-group">
-                <label for="d2">Dispositif Hygiene</label>
+                <label for="d2">Dispositif Hygiene<span class="etoileObligatoire">*</span></label>
                 <input type="text" wire:model="newData.libdispos" class="form-control" placeholder="Dispositif Hygiene" required>
             </div>
             <div class="form-group">
-                <label for="d2">Quantite</label>
+                <label for="d2">Quantite<span class="etoileObligatoire">*</span></label>
                 <input type="text" wire:model="newData.quantite" class="form-control @error('newData.quantite')
                 is-invalid
             @enderror" placeholder="Quantite" required>
@@ -34,12 +34,3 @@
         </div>
     </form>
 </div>
-{{-- 
-<script>
-    window.addEventListener("success", event=>{
-        console.log(event)
-
-    }
-
-
-</script> --}}

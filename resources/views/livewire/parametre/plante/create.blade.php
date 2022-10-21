@@ -17,16 +17,17 @@
     <form role="form" wire:submit.prevent="insertInBd()">
         <div class="card-body">
             <div class="form-group">
-                <label for="d2">Plante</label>
+                <label for="d2">Plante<span class="etoileObligatoire">*</span></label>
                 <input type="text" wire:model="newData.libplante" class="form-control" placeholder="Plante" required>
             </div>
+            <label for="d2">Type Plante<span class="etoileObligatoire">*</span></label>
             <select class="form-control " wire:model="newData.typeplante" required>
                 <option value="">-------</option>
                
                 <option value="L">L</option>
                 <option value="C">C</option>
                 <option value="A">A</option>
-              
+               
 
             </select>
         </div>

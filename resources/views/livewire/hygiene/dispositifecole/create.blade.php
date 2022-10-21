@@ -17,7 +17,7 @@
     <form role="form" wire:submit.prevent="insertInBd()">
         <div class="card-body">
             <div class="form-group">
-                <div><label for="d2">Dispositif Hygiene</label></div>
+                <div><label for="d2">Dispositif Hygiene<span class="etoileObligatoire">*</span></label></div>
                 <select class="form-control " wire:model="newData.iddispos" required>
                     <option value="">-------</option>
                     @foreach ($listsf2 as $list )
@@ -27,7 +27,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <div><label for="d2">Ecole</label></div>
+                <div><label for="d2">Ecole<span class="etoileObligatoire">*</span></label></div>
                 <select class="form-control " wire:model="newData.idecole" required>
                     <option value="">-------</option>
                     @foreach ($listsf as $list )

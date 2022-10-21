@@ -17,7 +17,7 @@
     <form role="form" wire:submit.prevent="insertInBd()">
         <div class="card-body">
             <div class="form-group">
-                <div><label for="d2">Ceb</label></div>
+                <div><label for="d2">Ceb <span class="etoileObligatoire">*</span></label></div>
                 <select class="form-control " wire:model="newData.idceb" required>
                     <option value="">Ceb-Province-Commune</option>
                     @foreach ($listsf as $list )
@@ -27,11 +27,11 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="d2">Ecole</label>
+                <label for="d2">Ecole<span class="etoileObligatoire">*</span></label>
                 <input type="text" wire:model="newData.libecole" class="form-control" placeholder="Ecole" required>
             </div>
             <div class="form-group">
-                <label for="d2">Nombre de Classe</label>
+                <label for="d2">Nombre de Classe<span class="etoileObligatoire">*</span></label>
                 <input type="text" wire:model="newData.nbclasse" class="form-control @error('newData.nbclasse')
                 is-invalid
             @enderror" placeholder="Nombre de Classe" required>

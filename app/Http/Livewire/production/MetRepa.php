@@ -64,25 +64,38 @@ class MetRepa extends Component
 
     public function insertInBd()
     {
+        $dataplante = $this->newDatap; 
+        $datavivre =  $this->newDatav;
+      
+        // ajout du metrepas
         $data = Metrepas::create([
             'idmetrepas' => $this->newData["libmetrepas"],
             'libmetrepas' => $this->newData["libmetrepas"],
-            'observation' => $this->newData["observation"]
+            'observation' => $this->newData["observation"] ?? null
         ]);
-       
-        $ingredients = collect($this->newDatap)->map(function ($ingredient) {
+ // ajout des ingredient
+
+        // cas de plante
+        $ingredients = collect($dataplante)->map(function ($ingredient) {
             return ['quantite' => $ingredient];
         });
-        // dd($data,$ingredients);
-       $data2 =  $data->$ingredients()->sync(
+       
+       $data->plantes()->sync(
             $ingredients
         );
-       dd($data2);
+         // cas de vivre
+         $ingredients2 = collect($datavivre)->map(function ($ingredient2) {
+            return ['quantite' => $ingredient2];
+        });
+       
+       $data->vivres()->sync(
+            $ingredients2
+        );
 
-        // ajout des ingredient
+       
 
 
-        // ajout du metrepas
+       
 
     }
     public function  editInBd()

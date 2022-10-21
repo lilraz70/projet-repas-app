@@ -1,7 +1,8 @@
 window._ = require('lodash');
 window.$ = require('jquery'); // importation de jquery
-// require('select2');
-// $('.select2').select2();
+require('select2'); // importation de select2
+$('.select2').select2(); // importation de select2
+
 
 
 // try {

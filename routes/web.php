@@ -146,7 +146,7 @@ Route::get('/accueil', [App\Http\Controllers\HomeController::class, 'index'])->n
                    Route::get('/metrepas',MetRepa::class)->name('metrepasindex');
                     Route::get('/production',Productions::class)->name('productionindex');
                      Route::get('/repas',Repa::class)->name('repasindex');
-                      // Route::get('/vivresingredients',VivresIngredients::class)->name('vivresingredientsindex');
+                     // N'est marche plus  // Route::get('/vivresingredients',VivresIngredients::class)->name('vivresingredientsindex');
                        Route::get('/vivresecoles',VivresEcoles::class)->name('vivresecolesindex');
                           Route::get('/ingredient',Ingredients::class)->name('ingredientindex');
 

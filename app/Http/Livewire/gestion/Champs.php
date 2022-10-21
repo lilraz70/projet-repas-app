@@ -20,10 +20,10 @@ class Champs extends Component
     public $selectedStatus = '';
     public $editData = [];
     public $search = "";
-    protected $rules = [
-        'newData.superficie' => 'numeric',
+    // protected $rules = [
+    //     'newData.superficie' => 'numeric',
        
-    ];
+    // ];
 
     public function render()
     {
@@ -63,13 +63,13 @@ class Champs extends Component
 
     public function insertInBd()
     {
-        $this->validate();
+        // $this->validate();
         $data = $this->newData;
         try {
        Champ::create([
             'idecole' => $data["idecole"],
             'libchamps' => $data["libchamps"],
-            'superficie' =>  $data["superficie"],
+            'superficie' =>  $data["superficie"] ?? null,
             'typechamps' =>  $data["typechamps"]
         ]);
         $this->newData=[];

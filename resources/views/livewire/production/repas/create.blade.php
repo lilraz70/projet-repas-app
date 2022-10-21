@@ -19,7 +19,7 @@
         <div class="card-body">
             <div class="row g-3 mx-auto mt-3">
                 <div class="col-md-4">
-                    <div><label for="d2">Ecole</label></div>
+                    <div><label for="d2">Ecole <span class="etoileObligatoire">*</span></label></div>
                     <select class="form-control " wire:model="newData.idecole" required>
                         <option value="">Ecole-Ceb-Commune-Province</option>
                         @foreach ($listsf3 as $list )
@@ -30,7 +30,7 @@
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <div><label for="d2">Met repas</label></div>
+                    <div><label for="d2">Met repas <span class="etoileObligatoire">*</span></label></div>
                     <select class="form-control " wire:model="newData.idmetrepas" required>
                         <option value="">-------</option>
                         @foreach ($listsf4 as $list )
@@ -40,7 +40,7 @@
                     </select>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div><label for="d2">Production</label></div>
+                    <div><label for="d2">Production <span class="etoileObligatoire">*</span></label></div>
                     <select class="form-control " wire:model="newData.idproduction" required>
                         <option value="">Champs-Plante-Anne</option>
                         @foreach ($listsf as $list )
@@ -51,25 +51,25 @@
                 </div>
                
                 <div class="col-md-4">
-                    <label for="d2">Nombre repas</label>
-                    <input type="text" wire:model="newData.nbrepas" class="form-control @error('newData.nbrepas')
+                    <label for="d2">Nombre repas <span class="etoileObligatoire">*</span></label>
+                    <input type="number" wire:model="newData.nbrepas" class="form-control @error('newData.nbrepas')
                     is-invalid
                 @enderror" placeholder="Nombre repas"
                         required>
                 </div>
                 <div class="col-md-4">
-                    <label for="d2">Date repas</label>
+                    <label for="d2">Date repas <span class="etoileObligatoire">*</span></label>
                     <input type="date" wire:model="newData.daterepas" class="form-control" placeholder="Date repas"
                         required>
                 </div>
                 <div class="col-md-3 mb-4">
-                    <label for="d2">Moment</label>
-                    <input type="text" wire:model="newData.moment" class="form-control" placeholder="Moment" required>
+                    <label for="d2">Moment <span class="etoileObligatoire">*</span></label>
+                    <input type="number" wire:model="newData.moment" class="form-control" placeholder="Moment" required>
                 </div>
                 <div class="col-md-4">
                     <label for="d2">Observation</label>
                     <input type="text" wire:model="newData.observation" class="form-control" placeholder="Observation"
-                        required>
+                        >
                 </div>
                 
             </div>

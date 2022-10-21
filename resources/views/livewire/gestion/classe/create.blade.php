@@ -18,7 +18,7 @@
             <div class="form-group">
                 
             <div class="form-group">
-                <label for="d2">Classe</label>
+                <label for="d2">Classe <span class="etoileObligatoire">*</span></label>
                 <input type="text" wire:model="newData.libclasse" class="form-control" placeholder="Classe" required>
             </div>
         </div>

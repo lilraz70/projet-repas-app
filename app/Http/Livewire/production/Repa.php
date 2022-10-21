@@ -79,7 +79,7 @@ class Repa extends Component
             'nbrepas' =>  $data["nbrepas"],
             'daterepas' =>  $data["daterepas"],
             'moment' =>  $data["moment"],
-            'observation' =>  $data["observation"]
+            'observation' =>  $data["observation"] ?? null
         ]);
         $this->newData=[];
 

@@ -41,10 +41,10 @@ class Metrepas extends Model
     protected $guarded = [];
     public function vivres()
     {
-        return $this->belongsToMany('App\Models\vivres','ingredient','idmetrepas','idvivre')->withPivot('quantite')->withTimestamps();
+        return $this->belongsToMany('App\Models\vivres','ingredient','idmetrepas','idvivre')->withPivot(['quantite'])->withTimestamps();
     }
     public function plantes()
     {
-        return $this->belongsToMany('App\Models\Plante','ingredient','idmetrepas','idplante')->withPivot('quantite')->withTimestamps();
+        return $this->belongsToMany('App\Models\Plante','ingredient','idmetrepas','idplante')->withPivot(['quantite'])->withTimestamps();
     }
 }

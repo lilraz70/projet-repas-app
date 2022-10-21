@@ -18,7 +18,7 @@
         <div class="card-body">
             <div class="row g-3 mx-auto mt-3">
                 <div class="col-md-3 mb-4">
-                <div><label for="d2">Champs</label></div>
+                <div><label for="d2">Champs <span class="etoileObligatoire">*</span></label></div>
                 <select class="form-control " wire:model="newData.idchamps" required>
                     <option value="">Champs-Ecole-Commune-Province</option>
                     @foreach ($listsf as $list )
@@ -28,7 +28,7 @@
                 </select>
             </div>
             <div class="col-md-4">
-                <div><label for="d2">Plante</label></div>
+                <div><label for="d2">Plante <span class="etoileObligatoire">*</span></label></div>
                 <select class="form-control " wire:model="newData.idplante" required>
                     <option value="">-------</option>
                     @foreach ($listsf2 as $list )
@@ -39,30 +39,30 @@
             </div>
            
             <div class="col-md-3 mb-4">
-                <label for="d2">Date</label>
+                <label for="d2">Date <span class="etoileObligatoire">*</span></label>
                 <input type="date" wire:model="newData.dateproduit" class="form-control" placeholder="DATE" required>
             </div>
             <div class="col-md-4">
-                <label for="d2">Quantite produit</label>
+                <label for="d2">Quantite produit <span class="etoileObligatoire">*</span></label>
                 <input type="text" wire:model="newData.qteproduit" class="form-control @error('newData.qteproduit')
                 is-invalid
             @enderror" placeholder="Quantite produit" required>
             </div>
             <div class="col-md-4">
-                <label for="d2">Quantite Consommee</label>
+                <label for="d2">Quantite Consommee <span class="etoileObligatoire">*</span></label>
                 <input type="text" wire:model="newData.qteconso" class="form-control @error('newData.qteconso')
                 is-invalid
             @enderror" placeholder="Quantite Consommee" required>
             </div>
             <div class="col-md-4">
-                <label for="d2">Quantite vendu</label>
+                <label for="d2">Quantite vendu <span class="etoileObligatoire">*</span></label>
                 <input type="text" wire:model="newData.qtevendu" class="form-control @error('newData.qtevendu')
                 is-invalid
             @enderror" placeholder="Quantite vendu" required>
             </div>
             <div class="col-md-4">
                 <label for="d2">Observation</label>
-                <input type="text" wire:model="newData.observation" class="form-control" placeholder="Observation" required>
+                <input type="text" wire:model="newData.observation" class="form-control" placeholder="Observation">
             </div>
         </div>
         </div>

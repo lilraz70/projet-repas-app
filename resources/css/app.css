@@ -6,7 +6,7 @@
 @import '~@fortawesome/fontawesome-free/css/solid';
 @import '~@fortawesome/fontawesome-free/css/brands';
 
-/* @import "~select2/dist/css/select2.css"; */
+@import "~select2/dist/css/select2.css";
 
 
 /* login partie */
@@ -254,3 +254,8 @@
 /* .form-select{
     width: auto;
 } */
+
+.etoileObligatoire{
+    color: red;
+    font-size:18px;
+}

@@ -65,7 +65,7 @@ class Csps extends Component
        Csp::create([
             
             'idcommune' => $data["idcommune"],
-            'codecsp' => $data["codecsp"],
+            'codecsp' => $data["codecsp"] ?? null,
             'libcsp' =>  $data["libcsp"]
         ]);
       

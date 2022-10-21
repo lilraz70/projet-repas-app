@@ -18,7 +18,7 @@
         <div class="card-body">
             <div class="row g-3 mx-auto mt-3">
                 <div class="form-group">
-                    <div><label for="d2">Ecole</label></div>
+                    <div><label for="d2">Ecole<span class="etoileObligatoire">*</span></label></div>
                     <select class="form-control " wire:model="newData.idecole" required>
                         <option value="">Ecole-Ceb-Commune-Province</option>
                         @foreach ($listsf2 as $list )
@@ -29,7 +29,7 @@
                     </select>
                 </div>
             <div class="col-md-4">
-                <div><label for="d2">Vivre</label></div>
+                <div><label for="d2">Vivre<span class="etoileObligatoire">*</span></label></div>
                 <select class="form-control " wire:model="newData.idvivre" required>
                     <option value="">-------</option>
                     @foreach ($listsf as $list )
@@ -39,7 +39,7 @@
                 </select>
             </div>
             <div class="col-md-4">
-                <div><label for="d2">Anne</label></div>
+                <div><label for="d2">Anne<span class="etoileObligatoire">*</span></label></div>
                 <select class="form-control " wire:model="newData.anne" required>
                     <option value="">-------</option>
                     @foreach ($listsf3 as $list )
@@ -49,11 +49,11 @@
                 </select>
             </div>
             <div class="col-md-4">
-                <label for="d2">Quantite recu</label>
+                <label for="d2">Quantite recu<span class="etoileObligatoire">*</span></label>
                 <input type="text" wire:model="newData.qterecu" class="form-control" placeholder="Quantite recu" required>
             </div>
             <div class="col-md-4">
-                <label for="d2">Quantite consommee</label>
+                <label for="d2">Quantite consommée<span class="etoileObligatoire">*</span></label>
                 <input type="text" wire:model="newData.qteconsommee" class="form-control" placeholder="Quantite consommee" required>
             </div>
             {{-- @foreach ($listsf as $list )

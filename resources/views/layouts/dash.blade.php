@@ -9,9 +9,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="{{asset('images/armoirie2.jpg')}}" type="image/x-icon"/>
 
-       {{-- select2 --}}
-    {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" /> --}}
-
     @livewireStyles
 
 </head>
@@ -54,9 +51,6 @@
 <!-- REQUIRED SCRIPTS -->
 <script src="{{ mix('js/app.js') }}"></script>
 
-   {{-- select2 --}}
-
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script> --}}
 
 @livewireScripts
 

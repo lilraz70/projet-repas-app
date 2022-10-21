@@ -7,7 +7,7 @@
     
       <div class="d-flex justify-content-center">
       {{-- <img class="rounded  d-block" src="{{asset('images/armoirie2.jpg')}}"> --}}
-      <img width="100%" height="50%"  src="{{asset('images/armoirie2.jpg')}}">
+      <img width="50%" height="50%"  src="{{asset('images/armoirie2.jpg')}}">
     </div>
     <hr class="my-4">
   </div>

@@ -19,7 +19,7 @@
             <div class="row g-3 mx-auto mt-3"> 
                 
             <div class="col-md-4 mb-4">
-                <div><label for="d2">Classe</label></div>
+                <div><label for="d2">Classe <span class="etoileObligatoire">*</span></label></div>
                 <select class="form-control " wire:model="newData.idclasse" required>
                     <option value="">-------</option>
                     @foreach ($listsf as $list )
@@ -29,7 +29,7 @@
                 </select>
             </div>
             <div class="col-md-4">
-                <div><label for="d2">Anne</label></div>
+                <div><label for="d2">Anne<span class="etoileObligatoire">*</span></label></div>
                 <select class="form-control " wire:model="newData.anne" required>
                     <option value="">-------</option>
                     @foreach ($listsf2 as $list )
@@ -39,13 +39,13 @@
                 </select>
             </div>
             <div class="col-md-4">
-                <label for="d2">Nombre de fille</label>
+                <label for="d2">Nombre de fille<span class="etoileObligatoire">*</span></label>
                 <input type="text" wire:model="newData.nbfille" class="form-control  @error('newData.nbfille')
                 is-invalid
             @enderror" placeholder="Nombre de fille" required>
             </div>
             <div class="col-md-4">
-                <label for="d2">Nombre de garcon</label>
+                <label for="d2">Nombre de garcon<span class="etoileObligatoire">*</span></label>
                 <input type="text" wire:model="newData.nbgarcon" class="form-control  @error('newData.nbgarcon')
                 is-invalid
             @enderror" placeholder="Nombre de garcon" required>

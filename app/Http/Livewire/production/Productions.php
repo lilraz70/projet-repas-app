@@ -78,7 +78,7 @@ class Productions extends Component
             'idlogin'=>Auth::User()->id,
             'qteconso' =>  $data["qteconso"],
             'qtevendu' =>  $data["qtevendu"],
-            'observation' =>  $data["observation"],
+            'observation' =>  $data["observation"] ?? null,
             'qteproduit' =>  $data["qteproduit"]
         ]);
         $this->newData=[];

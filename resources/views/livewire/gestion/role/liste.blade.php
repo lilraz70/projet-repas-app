@@ -9,7 +9,7 @@
             <h3 class="card-title flex-grow-1"><i class="fa-sharp fa-solid fa-clipboard-list fa-2x mr-1"></i>Liste
                 des Roles</h3>
             <div class="card-tools d-flex align-items-center">
-                <a class="btn btn-link text-white mr-4 d-block" wire:click.prevent="gotoCreate()"><i class="fa-solid fa-square-plus mr-1"></i>Nouvelle
+                <a class="btn btn-link text-white mr-4 d-block" wire:click.prevent="gotoCreate()"><i class="fa-solid fa-square-plus mr-1"></i>Nouveau
                     </a>
                     
                 <div class="input-group input-group-md" style="width: 150px;">
@@ -39,8 +39,8 @@
                         <td class="text-center">{{$list->nom}}</td>
                        
                         <td class="text-center">
-                            <button class="btn btn-link" wire:click="gotoEdit({{$list->id}})"><i class="fa-solid fa-pen-to-square fa-1x "></i></button>
-                            <button class="btn btn-link" wire:click="confirmDelete('{{$list->nom}}', {{$list->id}})"><i class="fa-solid fa-trash fa-1x"></i></button>    
+                            {{-- <button class="btn btn-link" wire:click="gotoEdit({{$list->id}})"><i class="fa-solid fa-pen-to-square fa-1x "></i></button> --}}
+                            {{-- <button class="btn btn-link" wire:click="confirmDelete('{{$list->nom}}', {{$list->id}})"><i class="fa-solid fa-trash fa-1x"></i></button>     --}}
                             </td>
                     </tr>
                     @endforeach
