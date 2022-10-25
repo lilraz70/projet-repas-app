@@ -7,66 +7,75 @@
                         class="fa-solid fa-file-pdf  fa-2xl"></i></a>
             </div>
 
-           
+
             <div class="tabletitle">
                 <h5 class="tabletitleh5">Déparasitage et supplémentation en vitamine A du 03 au 05 mai 2021</h5>
             </div>
 
-           
+
         </div>
 
         <div class="card-body ">
             <div class="tablediv">
-            <table>
-                <thead>
-                   
-                    <tr>
-                        <th>Province</th>
-                        <th>CEB</th>
-                        <th>NBRE D'ECOLE</th>
-                        <th>EFF TOTAL</th>
-                        <th>G</th>
-                        <th>F</th>
-                       
-                    </tr>
-               
-                </thead>
-                <tbody>
+                <table>
+                    <thead>
 
-                    <tr>
-                        <td rowspan="2">Province</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
+                        <tr>
+                            <th>Province</th>
+                            <th>CEB</th>
+                            <th>NBRE D'ECOLE</th>
+                            <th>EFF TOTAL</th>
+                            <th>G</th>
+                            <th>F</th>
+
+                        </tr>
+
+                    </thead>
+                    <tbody>
+
+                        @foreach ($listsf as $list)
+                        <tr>
+                            <tr>
+                                <td rowspan="4">{{$list->libprovince}}</td>
+                            </tr>
+                               
+    
+                            <tr>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>4</td>
+                                <td>5</td>
+                                <td>6</td>
+                            </tr>
+    
+                            <tr class="trtotal1">
+                                <td>Total</td>
+                                <td>2t</td>
+                                <td>3t</td>
+                                <td>4t</td>
+                                <td>5t</td>
+    
+                            </tr>
+    
+                            </tr>
+                        @endforeach
                         
-                    </tr>
-                    <tr class="trtotal1">
-                        <td >Total</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        
-                    </tr>
+                        {{--
 
-                    
+                        <tr class="trtotal2">
+                            <td>Total</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>6</td>
 
-                    <tr class="trtotal2">
-                        <td >Total</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        
-                    </tr>
+                        </tr> --}}
 
-                    
-                </tbody>
-            </table>
-        </div>
+
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
@@ -78,24 +87,27 @@
     /* table title */
 
     .tabletitle {
-        background-color: #f4a261 ;
+        background-color: #f4a261;
         align-content: center;
         text-align: center;
         margin-left: 15%;
         margin-right: 15%;
         padding-bottom: 15px;
         border: solid #333;
-       
+
     }
-    .trtotal1{
-        background-color: #fcd5ce ;
-       
+
+    .trtotal1 {
+        background-color: #fcd5ce;
+
     }
-    .trtotal2{
+
+    .trtotal2 {
         background-color: #b7e4c7;
-       
+
     }
-    .tabletitleh5{
+
+    .tabletitleh5 {
         font-weight: bold;
     }
 
@@ -107,9 +119,10 @@
 
 
     }
+
     .tablechoixdiv {
         margin-top: 10px;
-       
+
     }
 
     .choixlabel {
@@ -117,24 +130,26 @@
         font-weight: bold;
     }
 
-.tablediv{
+    .tablediv {
 
-    margin-top: 10px;
-    margin-left: 20%;
-    align-content: center;
-}
-    table{
-        border-collapse: collapse;
+        margin-top: 10px;
+        margin-left: 20%;
+        align-content: center;
     }
-    thead
-        {
-            background-color: #dee2e6;
 
+    table {
         border-collapse: collapse;
     }
 
+    thead {
+        background-color: #dee2e6;
 
-    td,th{
+        border-collapse: collapse;
+    }
+
+
+    td,
+    th {
         padding: 6px;
         /* font-size: 20px; */
         text-align: center;

@@ -5,6 +5,7 @@ namespace App\Http\Livewire\etatetstatistique;
 use App\Models\Region;
 use Livewire\Component;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
 
 

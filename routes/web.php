@@ -162,3 +162,5 @@ Route::get('/accueil', [App\Http\Controllers\HomeController::class, 'index'])->n
         // supprimer 
          
             //  Route::get('/soins',Soin::class)->name('vivresindex');
+
+            

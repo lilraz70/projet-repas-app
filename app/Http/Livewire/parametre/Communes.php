@@ -60,7 +60,7 @@ class Communes extends Component
 
     public function insertInBd()
     {
-        $this->validate();
+        // $this->validate();
         try {
 
        $data = $this->newData;
