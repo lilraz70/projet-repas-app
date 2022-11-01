@@ -39,7 +39,7 @@ class Consultations extends Component
                 "lists"=>Soins::query()
                 ->when($this->selectedStatus, function ($query) {
                     return $query->where('idconsultation', $this->selectedStatus);
-                })->paginate(5),
+                })->paginate(10),
                 
                 "listsf" => Ecole::all(),
                 "listsf2" => Csp::all(),
@@ -79,7 +79,7 @@ class Consultations extends Component
         try {
             $data = $this->newData;
             Consultation::create([
-                'idconsultation' =>$data["idecole"].$data['idmedicament'],
+                'idconsultation' =>$data["idecole"].(int)$data["dateconsult"].$data['idmedicament'].$data["nb_prise"],
                 'dateconsult' => $data["dateconsult"],
                 'anne' => (int)$data["dateconsult"],
                 'idusers' => Auth::User()->id,
@@ -88,19 +88,19 @@ class Consultations extends Component
                 'nbfille' =>  $data["nbfille"],
                 'nbgarcon' =>  $data["nbgarcon"],
                 'nbtotal' =>  $data["nbfille"] + $data["nbgarcon"],
-                'phase' =>  $data["phase"],
+                'nb_prise' =>  $data["nb_prise"],
                 'nb_recu'=> $data['nbrecu']
             ]);
             Soins::create([
                 'idmedicament' => $data['idmedicament'],
-                'idconsultation' =>$data["idecole"].$data['idmedicament']
+                'idconsultation' =>$data["idecole"].(int)$data["dateconsult"].$data['idmedicament'].$data["nb_prise"]
             ]);
             $this->newData = [];
 
             // $this->dispatchBrowserEvent("showMessageSuccess", []);
             session()->flash('erreur3', "Ajout reussi");
         } catch (\Throwable $th) {
-            session()->flash('erreur', "Oups!! Opération non effectuer,Ces donnees exits");
+            session()->flash('erreur', "Oups!! Opération non effectuer,verifier la date de la consultation");
         }
     }
     public function  editInBd()
@@ -118,7 +118,7 @@ class Consultations extends Component
             'nbfille' => $this->editData["nbfille"],
             'nbgarcon' =>  $this->editData["nbgarcon"],
             'nbtotal' =>  $this->editData["nbfille"] + $this->editData["nbgarcon"],
-            'phase' =>  $this->editData["phase"]
+            'nb_prise' =>  $this->editData["nb_prise"]
 
         ]);
         

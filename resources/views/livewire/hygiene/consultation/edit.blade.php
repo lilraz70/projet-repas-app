@@ -64,24 +64,24 @@
                 </div>
                 <div class="col-md-4 mb-4">
                     <label for="d2">Nombre de fille</label>
-                    <input type="text" wire:model="editData.nbfille" class="form-control @error('editData.nbfille')
+                    <input type="number" wire:model="editData.nbfille" class="form-control @error('editData.nbfille')
                     is-invalid
                 @enderror" placeholder="Nombre de fille"
                         required>
                 </div>
                 <div class="col-md-4">
                     <label for="d2">Nombre de garcon</label>
-                    <input type="text" wire:model="editData.nbgarcon" class="form-control @error('editData.nbgarcon')
+                    <input type="number" wire:model="editData.nbgarcon" class="form-control @error('editData.nbgarcon')
                     is-invalid
                 @enderror" placeholder="Nombre de garcon"
                         required>
                 </div>
                 
                 <div class="col-md-4 ">
-                    <label for="d2">Phase</label>
-                    <input type="text" wire:model="editData.phase" class="form-control  @error('editData.phase')
+                    <label for="d2">Nombre de prise</label>
+                    <input type="number" wire:model="editData.nb_prise" class="form-control  @error('editData.nb_prise')
                     is-invalid
-                @enderror" placeholder="Phase" required>
+                @enderror" placeholder="Nombre de prise" required>
                 </div>
             </div>
         </div>

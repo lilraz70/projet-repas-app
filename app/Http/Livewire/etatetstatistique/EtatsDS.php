@@ -19,7 +19,7 @@ class EtatsDS extends Component
         try {
             $idcommune = 1;
             // $datas = DB::select('select libprovince, libceb from province p,ceb ce,commune co where p.idprovince = co.idprovince and co.idcommune = ce.idcommune');
-            $datas = region::
+            $datas = region::all();
             dd($datas);
         return view('livewire.etatetstatistique.etatsds',[
             
