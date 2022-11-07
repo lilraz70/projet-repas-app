@@ -84,6 +84,7 @@ class EtatsEcole extends Component
                             and  ecole.idecole = classeecole.idecole
                             and ecole.idecole = $this->ecole
                                             ");
+                                           
                 foreach ($classes as $classe) {
                     $etatClasse = array();
                     $effectif = DB::select("
@@ -197,7 +198,6 @@ class EtatsEcole extends Component
                         'etatGlobals' => $this->etatGlobal,
                         'listsf2' => Ecole::all(),
                         'listsf3' => annescol::all()
-
                     ]
                 )
                     ->extends("layouts.dash")

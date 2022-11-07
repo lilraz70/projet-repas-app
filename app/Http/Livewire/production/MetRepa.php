@@ -66,7 +66,7 @@ class MetRepa extends Component
     {
         $dataplante = $this->newDatap; 
         $datavivre =  $this->newDatav;
-      
+     
         // ajout du metrepas
         $data = Metrepas::create([
             'idmetrepas' => $this->newData["libmetrepas"],
@@ -91,11 +91,6 @@ class MetRepa extends Component
        $data->vivres()->sync(
             $ingredients2
         );
-
-       
-
-
-       
 
     }
     public function  editInBd()

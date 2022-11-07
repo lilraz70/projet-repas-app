@@ -162,8 +162,6 @@
         background-color: #dee2e6;
 
     }
-
-
     td,
     th {
         padding: 6px;

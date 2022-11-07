@@ -21,10 +21,9 @@
             </div>
             <select class="form-control " wire:model="editData.typeplante" required>
                 <option value="">-------</option>
-               
-                <option value="L">L</option>
-                <option value="C">C</option>
-                <option value="A">A</option>
+                <option value="Legume">Legume</option>
+                <option value="Cereale">Cereale</option>
+                <option value="Autres">Autres</option>
               
 
             </select>
