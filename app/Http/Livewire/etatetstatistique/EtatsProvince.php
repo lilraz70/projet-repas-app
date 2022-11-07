@@ -15,8 +15,8 @@ class EtatsProvince extends Component
 
     public $etatGlobal = [];
     public  $enteteEtat = [];
-    public $province  = 1;
-    public $annescolaire = 2022;
+    public $province  = ''; // 1
+    public $annescolaire = ''; //2022
 
     public function render()
     {
@@ -26,7 +26,7 @@ class EtatsProvince extends Component
             $this->enteteEtat = array();
             $this->etatGlobal = array();
             return view(
-                'livewire.etatetstatistique.etatsprovince.',
+                'livewire.etatetstatistique.etatsprovince',
                 [
                     'detail' => $this->enteteEtat,
                     'etatGlobals' => $this->etatGlobal,
@@ -37,48 +37,48 @@ class EtatsProvince extends Component
                 ->extends("layouts.dash")
                 ->section('contenu');
         } else {
-            /* second etat  de la vue apres avoir choisi l'anne et l'ecole*/
-            try { // si les requetes donne rien je lui envoi un message avec le try
+            /* second etat  de la vue apres avoir choisi l'anne et la province*/
+             try { // si les requetes donne rien je lui envoi un message avec le try
                 $this->etatGlobal = [];
 
                 /* constante pour les requetes */
                 $fer = 'fer';
                 $nb16 = 16;
-                $nb1 = 1; // default 1
+                $nb1 = 1;
                 $nb2 = 2;
                 $fer = 'Fer';
                 $alb = 'Albendazole';
                 $vita = "Vitamine A";
 
                 $etatDetail = DB::select("
-                        select distinct nbfille,nbgarcon,nbtotal,nbclasse,libceb,libprovince,libregion,anne,libecole
+                        select distinct nbfille,nbgarcon,nbtotal,libceb,libprovince,libregion,anne,libecole, count(libceb) as nbceb
                         from eleve,ecole,classe,classeecole,ceb,province,region,commune
                         where eleve.anne =  $this->annescolaire and
                         province.idprovince = $this->province and
-                        ecole.idecole = classeecole.idecole 
-                        and classe.idclasse = classeecole.idclasse
-                        and eleve.idclasse = classe.idclasse and
-                        ecole.idceb = ceb.idceb and ceb.idcommune = commune.idcommune
-                        and commune.idprovince = province.idprovince 
-                        and province.idregion = region.idregion
+                        ecole.idecole = classeecole.idecole and
+                        classe.idclasse = classeecole.idclasse and 
+                        eleve.idclasse = classe.idclasse  and
+                        ecole.idceb = ceb.idceb and 
+                        ceb.idcommune = commune.idcommune and 
+                        commune.idprovince = province.idprovince and 
+                        province.idregion = region.idregion
+                        group by eleve.nbfille,eleve.nbgarcon,eleve.nbtotal,ceb.libceb,province.libprovince,region.libregion,eleve.anne,ecole.libecole
                     "); // Entete de l'etat 
-                    
+               
                 $etatDetail =  $etatDetail[0];
-
+                
                 $this->enteteEtat = array();
                 $this->enteteEtat['detail'] = [
                     'nbfille' => $etatDetail->nbfille,
                     'nbgarcon' => $etatDetail->nbgarcon,
                     'nbtotal' => $etatDetail->nbtotal,
-                    'nbclasse' => $etatDetail->nbclasse,
                     'libceb' => $etatDetail->libceb,
                     'libprovince' => $etatDetail->libprovince,
                     'libregion' => $etatDetail->libregion,
                     'anne' => $etatDetail->anne,
                     'libecole' => $etatDetail->libecole,
+                    'nbceb' => $etatDetail->nbceb,
                 ];
-             
-
                 $cebs = DB::select("
 
                             select * from ceb,province,commune 
@@ -86,9 +86,9 @@ class EtatsProvince extends Component
                             commune.idprovince = province.idprovince and 
                             commune.idcommune = ceb.idcommune
                                             ");
-                
+
                 foreach ($cebs as $ceb) {
-                    
+
                     $etatClasse = array();
                     $effectif = DB::select("
                                         select nbfille,nbgarcon,nbtotal
@@ -100,88 +100,107 @@ class EtatsProvince extends Component
                                         and classe.idclasse = classeecole.idclasse
                                         and eleve.idclasse = classe.idclasse
                                     "); // effectifs total 
-                                    dd( $effectif);
+
                     $effectif = $effectif[0];
-                    dd( $effectif);
                     $nb_16_fer = DB::select("
                                         select nbfille,nbgarcon,nbtotal 
-                                        from consultation,soins,medicament,ecole,classe,classeecole
-                                        where consultation.anne =  $this->annescolaire and
-                                        classe.idclasse = $classe->idclasse and 
-                                        ecole.idecole = $this->province and
-                                        ecole.idecole = classeecole.idecole and 
-                                        classe.idclasse = classeecole.idclasse and soins.idmedicament = medicament.idmedicament
+                                        from consultation,soins,medicament,ecole,classe,classeecole,ceb
+                                        where ceb.idceb = $ceb->idceb 
+                                        and consultation.anne =  $this->annescolaire 
+                                        and ecole.idceb = ceb.idceb 
+                                        and ecole.idecole = classeecole.idecole 
+                                        and classe.idclasse = classeecole.idclasse 
+                                        and ecole.idecole = consultation.idecole
+                                        and soins.idmedicament = medicament.idmedicament
                                         and soins.idconsultation = consultation.idconsultation
-                                        and medicament.libmedicament ='$fer' and consultation.nb_prise >=$nb16;
+                                        and medicament.libmedicament ='$fer'
+                                        and consultation.nb_prise >=$nb16;
                                     ");
+
                     $nb_16_fer = $nb_16_fer[0];
 
                     $nb_moins_16_fer = DB::select("
-                                    select nbfille,nbgarcon,nbtotal 
-                                    from consultation,soins,medicament,ecole,classe,classeecole
-                                    where consultation.anne =  $this->annescolaire and
-                                    classe.idclasse = $classe->idclasse and 
-                                    ecole.idecole = $this->province and
-                                    ecole.idecole = classeecole.idecole and 
-                                    classe.idclasse = classeecole.idclasse and soins.idmedicament = medicament.idmedicament
-                                    and soins.idconsultation = consultation.idconsultation
-                                    and medicament.libmedicament ='$fer' and consultation.nb_prise < $nb16;
+                    select nbfille,nbgarcon,nbtotal 
+                    from consultation,soins,medicament,ecole,classe,classeecole,ceb
+                    where ceb.idceb = $ceb->idceb 
+                    and consultation.anne =  $this->annescolaire 
+                    and ecole.idceb = ceb.idceb 
+                    and ecole.idecole = classeecole.idecole 
+                    and classe.idclasse = classeecole.idclasse 
+                    and ecole.idecole = consultation.idecole
+                    and soins.idmedicament = medicament.idmedicament
+                    and soins.idconsultation = consultation.idconsultation
+                    and medicament.libmedicament ='$fer'
+                    and consultation.nb_prise < $nb16;
                                     ");
                     $nb_moins_16_fer =  $nb_moins_16_fer[0];
 
-
                     $nb_2_alb = DB::select("
-                                        select nbfille,nbgarcon,nbtotal 
-                                        from consultation,soins,medicament,ecole,classe,classeecole
-                                        where consultation.anne =  $this->annescolaire and
-                                        classe.idclasse = $classe->idclasse and 
-                                        ecole.idecole = $this->province and
-                                        ecole.idecole = classeecole.idecole and 
-                                        classe.idclasse = classeecole.idclasse and soins.idmedicament = medicament.idmedicament
-                                        and soins.idconsultation = consultation.idconsultation
-                                        and medicament.libmedicament ='$alb' and consultation.nb_prise >= $nb2;
+                                        
+                    select nbfille,nbgarcon,nbtotal 
+                    from consultation,soins,medicament,ecole,classe,classeecole,ceb
+                    where ceb.idceb = $ceb->idceb 
+                    and consultation.anne =  $this->annescolaire 
+                    and ecole.idceb = ceb.idceb 
+                    and ecole.idecole = classeecole.idecole 
+                    and classe.idclasse = classeecole.idclasse 
+                    and ecole.idecole = consultation.idecole
+                    and soins.idmedicament = medicament.idmedicament
+                    and soins.idconsultation = consultation.idconsultation
+                    and medicament.libmedicament ='$alb'
+                    and consultation.nb_prise >= $nb2;
                                     ");
                     $nb_2_alb =  $nb_2_alb[0];
 
+
                     $nb_1_alb = DB::select("
-                                    select nbfille,nbgarcon,nbtotal 
-                                    from consultation,soins,medicament,ecole,classe,classeecole
-                                    where consultation.anne =  $this->annescolaire and
-                                    classe.idclasse = $classe->idclasse and 
-                                    ecole.idecole = $this->province and
-                                    ecole.idecole = classeecole.idecole and 
-                                    classe.idclasse = classeecole.idclasse and soins.idmedicament = medicament.idmedicament
-                                    and soins.idconsultation = consultation.idconsultation
-                                    and medicament.libmedicament ='$alb' and consultation.nb_prise <= $nb1;
+                    select nbfille,nbgarcon,nbtotal 
+                    from consultation,soins,medicament,ecole,classe,classeecole,ceb
+                    where ceb.idceb = $ceb->idceb 
+                    and consultation.anne =  $this->annescolaire 
+                    and ecole.idceb = ceb.idceb 
+                    and ecole.idecole = classeecole.idecole 
+                    and classe.idclasse = classeecole.idclasse 
+                    and ecole.idecole = consultation.idecole
+                    and soins.idmedicament = medicament.idmedicament
+                    and soins.idconsultation = consultation.idconsultation
+                    and medicament.libmedicament ='$alb'
+                    and consultation.nb_prise <= $nb1;
                                 ");
                     $nb_1_alb =  $nb_1_alb[0];
 
                     $nb_2_vita = DB::select("
-                                        select nbfille,nbgarcon,nbtotal 
-                                        from consultation,soins,medicament,ecole,classe,classeecole
-                                        where consultation.anne =  $this->annescolaire and
-                                        classe.idclasse = $classe->idclasse and 
-                                        ecole.idecole = $this->province and
-                                        ecole.idecole = classeecole.idecole and 
-                                        classe.idclasse = classeecole.idclasse and soins.idmedicament = medicament.idmedicament
-                                        and soins.idconsultation = consultation.idconsultation
-                                        and medicament.libmedicament ='$vita' and consultation.nb_prise >=$nb2;
+                                       
+                    select nbfille,nbgarcon,nbtotal 
+                    from consultation,soins,medicament,ecole,classe,classeecole,ceb
+                    where ceb.idceb = $ceb->idceb 
+                    and consultation.anne =  $this->annescolaire 
+                    and ecole.idceb = ceb.idceb 
+                    and ecole.idecole = classeecole.idecole 
+                    and classe.idclasse = classeecole.idclasse 
+                    and ecole.idecole = consultation.idecole
+                    and soins.idmedicament = medicament.idmedicament
+                    and soins.idconsultation = consultation.idconsultation
+                    and medicament.libmedicament ='$vita'
+                    and consultation.nb_prise >=$nb2;
                                     ");
                     $nb_2_vita =  $nb_2_vita[0];
 
                     $nb_1_vita = DB::select("
-                                            select nbfille,nbgarcon,nbtotal 
-                                            from consultation,soins,medicament,ecole,classe,classeecole
-                                            where consultation.anne =  $this->annescolaire and
-                                            classe.idclasse = $classe->idclasse and 
-                                            ecole.idecole = $this->province and
-                                            ecole.idecole = classeecole.idecole and 
-                                            classe.idclasse = classeecole.idclasse and soins.idmedicament = medicament.idmedicament
-                                            and soins.idconsultation = consultation.idconsultation
-                                            and medicament.libmedicament ='$vita' and consultation.nb_prise <= $nb1;
+                    select nbfille,nbgarcon,nbtotal 
+                    from consultation,soins,medicament,ecole,classe,classeecole,ceb
+                    where ceb.idceb = $ceb->idceb 
+                    and consultation.anne =  $this->annescolaire 
+                    and ecole.idceb = ceb.idceb 
+                    and ecole.idecole = classeecole.idecole 
+                    and classe.idclasse = classeecole.idclasse 
+                    and ecole.idecole = consultation.idecole
+                    and soins.idmedicament = medicament.idmedicament
+                    and soins.idconsultation = consultation.idconsultation
+                    and medicament.libmedicament ='$vita'
+                    and consultation.nb_prise <= $nb1;
                                         ");
                     $nb_1_vita =  $nb_1_vita[0];
-
                     //  recuperation des resultats
 
                     $etatClasse['effectif'] =   ['g' =>  $effectif->nbgarcon, 'f' =>  $effectif->nbfille, 't' =>  $effectif->nbtotal];
@@ -192,11 +211,12 @@ class EtatsProvince extends Component
                     $etatClasse['nb_1_vita'] =   ['g' => $nb_1_vita->nbgarcon, 'f' => $nb_1_vita->nbfille, 't' =>  $nb_1_vita->nbtotal];
                     $etatClasse['nb_2_vita'] =   ['g' =>  $nb_2_vita->nbgarcon, 'f' =>  $nb_2_vita->nbfille, 't' =>  $nb_2_vita->nbtotal];
 
-                    $this->etatGlobal[$classe->libclasse] = $etatClasse; // recuperer l'ensemble des donnees
+                    $this->etatGlobal[$ceb->libceb] = $etatClasse; // recuperer l'ensemble des donnees
                 }
                 /* ici j'envoi les donnees des requetes */
+               
                 return view(
-                    'livewire.etatetstatistique.etatsecole',
+                    'livewire.etatetstatistique.etatsprovince',
                     [
                         'detail' => $this->enteteEtat,
                         'etatGlobals' => $this->etatGlobal,
@@ -212,13 +232,12 @@ class EtatsProvince extends Component
                 $this->enteteEtat = array();
                 $this->etatGlobal = array();
                 return view(
-                    'livewire.etatetstatistique.etatsecole',
+                    'livewire.etatetstatistique.etatsprovince',
                     [
                         'detail' => $this->enteteEtat,
                         'etatGlobals' => $this->etatGlobal,
                         'listsf2' => Province::all(),
                         'listsf3' => annescol::all()
-
                     ]
                 )
                     ->extends("layouts.dash")
@@ -231,7 +250,7 @@ class EtatsProvince extends Component
     // html to pdf using dompdf
     public function exportPdf()
     {
-        
+
         // dd($this->enteteEtat, $this->etatGlobal);
         $pdfContent = PDF::loadView('livewire.etatetstatistique.etatsecole')->output();
         return response()->streamDownload(

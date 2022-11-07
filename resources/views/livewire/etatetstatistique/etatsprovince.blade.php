@@ -1,4 +1,4 @@
-<div class=" p-2 " >
+<div class=" p-2 ">
     @if (session()->has('erreur2'))
     <div class="alert alert-danger">
         {{ session('erreur2') }}
@@ -13,7 +13,7 @@
 
 
             <div class="tabletitle">
-                <h5 class="tabletitleh5">Fiche synthèse de distribution des produits aux élèves : Niveau Ecole</h5>
+                <h5 class="tabletitleh5">Fiche synthèse de distribution des produits aux élèves : Niveau Ceb</h5>
             </div>
 
             <div class="tablechoix">
@@ -23,25 +23,19 @@
                         Region : {{$detail['detail']['libregion'] ?? ''}}
                     </span>
 
-                    <span class="choixlabel" for="">Province : {{$detail['detail']['libprovince'] ?? ''}} </span>
+                    <span class="choixlabel" for="">Province de :
+                        <select class="" wire:model.lazy="province" required>
+                            <option value="">-------</option>
+                            @foreach ($listsf2 as $list )
+                            <option value="{{$list->idprovince}}">{{$list->libprovince}}</option>
+                            @endforeach
 
-                    <span class="choixlabel" for="">Ceb : {{$detail['detail']['libceb']?? ''}} </span>
-
-                    <span class="choixlabel" for="">
-                        Ecole de :
-                            <select class="" wire:model.lazy="ecole" required>
-                                <option value="">-------</option>
-                                @foreach ($listsf2 as $list )
-                                <option value="{{$list->idecole}}">{{$list->libecole}}</option>
-                                @endforeach
-
-                            </select>
-                    </span>
+                        </select></span>
                 </div>
 
 
                 <div class="tablechoixdiv">
-                    <span class="choixlabel">Nombre de classes : {{$detail['detail']['nbclasse'] ?? ''}}</span>
+                    <span class="choixlabel">Nombre de ceb : {{$detail['detail']['nbceb'] ?? ''}}</span>
                     <span class="choixlabel">Effectif total Elèves :{{$detail['detail']['nbtotal'] ?? ''}}</span>
                     <span class="choixlabel">Garçon : {{$detail['detail']['nbgarcon'] ?? ''}}</span>
                     <span class="choixlabel">Filles : {{$detail['detail']['nbfille'] ?? ''}}</span>
@@ -49,16 +43,16 @@
 
 
                 <div class="tablechoixdiv">
-                    <span class="choixlabel">Formation sanitaire de réference :</span>
+                  
                     <label class=" choixlabel" for="">
                         Année scolaire :
-                            <select class="" wire:model.lazy="annescolaire" required>
-                                <option value="">-------</option>
-                                @foreach ($listsf3 as $list )
-                                <option value="{{$list->anne}}">{{$list->anne}}</option>
-                                @endforeach
+                        <select class="" wire:model.lazy="annescolaire" required>
+                            <option value="">-------</option>
+                            @foreach ($listsf3 as $list )
+                            <option value="{{$list->anne}}">{{$list->anne}}</option>
+                            @endforeach
 
-                            </select>
+                        </select>
                     </label>
                 </div>
             </div>
@@ -70,7 +64,7 @@
                     <thead>
 
                         <tr>
-                            <th rowspan="2">Classe</th>
+                            <th rowspan="2">Ceb</th>
                             <th colspan="3">Effectifs</th>
                             <th colspan="3">Nbre d'El. à 16 prises de fer</th>
                             <th colspan="3">Nbre d'El. à moins de 16 prises de fer</th>
@@ -136,7 +130,7 @@
                             <td></td>
                         </tr>
                         @endforeach
-                      
+
 
 
 
@@ -167,7 +161,7 @@
                         </tr> --}}
 
                         {{-- 10 l --}}
-{{-- 
+                        {{--
                         <tr>
                             <td colspan="4">Pourcentage</td>
                             <td>5</td>
