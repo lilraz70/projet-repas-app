@@ -35,6 +35,7 @@ use App\Http\Livewire\etatetstatistique\EtatsDS;
 use App\Http\Livewire\hygiene\Dispositifsecoles;
 use App\Http\Livewire\etatetstatistique\EtatsQPLC;
 use App\Http\Livewire\etatetstatistique\EtatsEcole;
+use App\Http\Livewire\etatetstatistique\EtatsSEMCF;
 use App\Http\Livewire\parametre\Dispositifhygienes;
 use App\Http\Livewire\production\VivresIngredients;
 use App\Http\Livewire\etatetstatistique\EtatsRegion;
@@ -158,6 +159,7 @@ Route::get('/accueil', [App\Http\Controllers\HomeController::class, 'index'])->n
              Route::get('/etatssproduitrecu',EtatsSProduitRecu::class)->name('etatssproduitrecu');
              Route::get('/etatsds',EtatsDS::class)->name('etatsds');
              Route::get('/etatqplc',EtatsQPLC::class)->name('etatsqplc');
+             Route::get('/etatsemcf',EtatsSEMCF::class)->name('etatsemcf');
            
         // supprimer 
          

@@ -9,7 +9,7 @@
 
 
             <div class="tabletitle">
-                <h5 class="tabletitleh5">Quantités de produits locaux récoltés dans les champs scolaires </h5>
+                <h5 class="tabletitleh5">Situation des enseignants et membres COGES formés au programme/h5>
             </div>
             <div class="tablechoix">
 

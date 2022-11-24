@@ -171,6 +171,12 @@
                   <p>Etat des quantités de produits locaux récoltés dans les champs scolaires </p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{Route('etatsemcf')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Etat Situation des enseignants et membres COGES formés au programme</p>
+                </a>
+              </li>
             </ul>
           </li>
              
