@@ -12,6 +12,20 @@
                 <h5 class="tabletitleh5">Déparasitage et supplémentation en vitamine A du 03 au 05 mai 2021</h5>
             </div>
 
+            <div class="tablechoix">
+                <div>
+                    <span class="choixlabel" for="">
+                        En :
+                            <select class="" wire:model.lazy="medicament" required>
+                                <option value="">-------</option>
+                                @foreach ($listsf2 as $list )
+                                <option value="{{$list->idmedicament}}">{{$list->libmedicament}}</option>
+                                @endforeach
+
+                            </select>
+                    </span>
+                </div>
+
 
         </div>
 
@@ -33,32 +47,31 @@
                     </thead>
                     <tbody>
 
-                        @foreach ($listsf as $list)
+                       
                         <tr>
-                            <tr>
-                                <td rowspan="4">{{$list->libprovince}}</td>
-                            </tr>
-                               
+                          
     
-                            <tr>
+                          {{-- ici la liste des province--}}
                                 <td>2</td>
+                                {{-- une boucle ici pour parcourir les cebs --}}
                                 <td>3</td>
                                 <td>4</td>
                                 <td>5</td>
                                 <td>6</td>
-                            </tr>
+                                <td>7</td>
+                       
     
-                            <tr class="trtotal1">
+                            {{-- <tr class="trtotal1">
                                 <td>Total</td>
                                 <td>2t</td>
                                 <td>3t</td>
                                 <td>4t</td>
                                 <td>5t</td>
     
-                            </tr>
+                            </tr> --}}
     
                             </tr>
-                        @endforeach
+                       
                         
                         {{--
 

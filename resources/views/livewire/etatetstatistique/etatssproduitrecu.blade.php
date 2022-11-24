@@ -12,11 +12,18 @@
                 <h5 class="tabletitleh5">Situation des produits reçus</h5>
             </div>
 
-            <div class="tablechoix">
+            <div class="tablechoixdiv">
 
-                <div class="">
-                    <label class=" choixlabel" for="">Année scolaire :...A CHOISIR..... </label>
-                </div>
+                <label class=" choixlabel" for="">
+                    Année scolaire :
+                    <select class="" wire:model.lazy="annescolaire" required>
+                        <option value="">-------</option>
+                        @foreach ($listsf3 as $list )
+                        <option value="{{$list->anne}}">{{$list->anne}}</option>
+                        @endforeach
+
+                    </select>
+                </label>
             </div>
         </div>
 
@@ -36,24 +43,28 @@
 
                     </thead>
                     <tbody>
-
+                        @foreach ($etatGlobals as $etat )
+                       
                         <tr>
-                            <td>Abendazole</td>
-                            <td>50</td>
-                            <td>50</td>
-                            <td>50</td>
-                            <td>50</td>
-
+                            <td>{{$etat->libmedicament}}</td>
+                            <td>{{$etat->qrecue}}</td>
+                            <td>{{$etat->qdistribuee}}</td>
+                            <td>{{$etat->qrecue - $etat->qdistribuee}}</td>
+                            <td>{{$etat->qrecue}}</td>
                         </tr>
+                        @endforeach
+                       
 
                     </tbody>
                 </table>
             </div>
             <div class="tablechoixdiv2">
-                <span class="">* Commentaires sur la distribution des produits : ...................................................................................................................</span>
+                <span class="">* Commentaires sur la distribution des produits :
+                    ...................................................................................................................</span>
             </div>
             <div class="tablechoixdiv2">
-                <span class="">* Suggestion pour améliorer la distribution: .....................................................................................................</span>
+                <span class="">* Suggestion pour améliorer la distribution:
+                    .....................................................................................................</span>
             </div>
             <div class="tablechoixdiv">
                 <span class="choixlabel">Fait à : ..............................</span>
@@ -98,16 +109,19 @@
 
     .tablechoixdiv {
         margin-top: 10px;
-        margin-left: 50%;
+      
         margin-top: 30px;
     }
+
     .tablechoixdiv2 {
-        display:block;
+        display: block;
         font-weight: bold;
         margin-bottom: 30px;
     }
+
     .tablechoixdiv3 {
-        margin-left:20%;
+        margin-top: 30px;
+        margin-left: 20%;
         font-weight: bold;
     }
 
